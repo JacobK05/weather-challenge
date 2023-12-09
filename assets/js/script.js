@@ -17,20 +17,15 @@ fetch (weatherApi)
   })
   .then(function (data) {
     console.log(data);
-  
-      for (var i = 0; i < data.length; i++) {
-        //Creating a h3 element and a p element
-        var fiveDay = document.createElement('li');
+    weatherContainer.innerHTML = '';
 
-        //Setting the text of the h3 element and p element.
-        fiveDay.textContent = data[i].weather;
-        
-
-        //Appending the dynamically generated html to the div associated with the id="users"
-        //Append will attach the element as the bottom most child.
-        weatherContainer.append(fiveDay);
-        
-      }
+    for (var i = 0; i < data.length; i++) {
+      var weatherData = data[i];
+      var weatherInfo = document.createElement('div');
+      weatherInfo.textContent = `City: ${weatherData.name}, Temperature: ${weatherData.main.temp}, Weather: ${weatherData.weather[0].description}`;
+      weatherContainer.appendChild(weatherInfo);
+      
+    }
     })
     .catch(function(error){
       console.log(error)
