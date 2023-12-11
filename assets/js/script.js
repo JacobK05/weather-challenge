@@ -10,8 +10,7 @@ e.preventDefault()
 console.log('checked')
 var cityName = cityText.value
 console.log(cityText.value)
-var weatherApi =`http://api.openweathermap.org/geo/1.0/direct?q=${cityText},&appid=${APIkey}`
-fetch (weatherApi)
+fetch (`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&appid=${APIkey}`)
 .then(function (response) {
     return response.json();
   })
@@ -24,7 +23,7 @@ fetch (weatherApi)
       var weatherInfo = document.createElement('div');
       weatherInfo.textContent = `City: ${weatherData.name}, Temperature: ${weatherData.main.temp}, Weather: ${weatherData.weather[0].description}`;
       weatherContainer.appendChild(weatherInfo);
-      
+
     }
     })
     .catch(function(error){
