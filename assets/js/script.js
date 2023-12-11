@@ -10,18 +10,13 @@ e.preventDefault()
 console.log('checked')
 var cityName = cityText.value
 console.log(cityText.value)
-fetch (`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&appid=${APIkey}`)
+fetch (`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&units=imperial&appid=${APIkey}`)
 .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
-    weatherContainer.innerHTML = '';
-
-    var weatherInfo = $("<div>");
-      weatherInfo.text(`City: ${data.name}, Temperature: ${data.main.temp}, Weather: ${data.weather[0].description}`);
-      weatherContainer.append(weatherInfo)
-      
+    weatherContainer.innerHTML = `City: ${data.name}, Temperature: ${data.main.temp}, Weather: ${data.weather[0].description}`;
     })
     .catch(function(error){
       console.log(error)
