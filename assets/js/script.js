@@ -18,13 +18,10 @@ fetch (`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&app
     console.log(data);
     weatherContainer.innerHTML = '';
 
-    for (var i = 0; i < data.length; i++) {
-      var weatherData = data[i];
-      var weatherInfo = document.createElement('div');
-      weatherInfo.textContent = `City: ${weatherData.name}, Temperature: ${weatherData.main.temp}, Weather: ${weatherData.weather[0].description}`;
-      weatherContainer.appendChild(weatherInfo);
-
-    }
+    var weatherInfo = $("<div>");
+      weatherInfo.text(`City: ${data.name}, Temperature: ${data.main.temp}, Weather: ${data.weather[0].description}`);
+      weatherContainer.append(weatherInfo)
+      
     })
     .catch(function(error){
       console.log(error)
