@@ -1,3 +1,19 @@
+* {
+ background-color: #f1f1f1;
+}
+
 #weather-container {
+text-align: center;
+}
+
+h1{
+ padding: 10px;
+ margin-left: 10px;
+ color: #90d5ec
+}
+
+#form{
+ padding: 10px;
+ margin-left: 10px;
 
 }
